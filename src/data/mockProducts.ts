@@ -706,5 +706,367 @@ export const mockProducts: Product[] = [
       'Carry case zipper is fully functional.'
     ],
     image: 'https://images.unsplash.com/photo-1534067783941-51c9c23eccfd?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'prod-16',
+    title: 'Speedo Fastskin Elite Swimming Goggles & Cap Set',
+    description: 'Professional competition-grade swimming kit. Includes Speedo Fastskin LZR goggles with UV400 protection, mirrored lenses, and matching silicone swim cap. Zero water leakage design.',
+    category: 'Sports',
+    brand: 'Speedo',
+    condition: 'New',
+    rentPerDay: 60,
+    securityDeposit: 600,
+    address: 'Bandra West, Carter Road',
+    city: 'Mumbai',
+    rating: 4.8,
+    reviewsCount: 14,
+    availability: 'Available',
+    trustScore: 96,
+    scamRisk: 'Low',
+    scamReasons: [
+      'Speedo product code verified via brand database.',
+      'Seller identity and address verified by RentWise.'
+    ],
+    owner: {
+      name: 'Rohan Sharma',
+      contact: '+91 98765 43210',
+      rating: 4.8,
+      verified: true
+    },
+    serialNumber: 'SPD-FSK-4421',
+    invoiceVerified: true,
+    rentHistory: [
+      { year: 2025, price: 55 },
+      { year: 2026, price: 60 }
+    ],
+    gradientTheme: 'linear-gradient(135deg, #0284c7 0%, #0c4a6e 100%)',
+    specifications: [
+      { label: 'Lens Type', value: 'Mirrored UV400' },
+      { label: 'Cap Material', value: 'Hydrodynamic Silicone' },
+      { label: 'Fit', value: 'Racing/Competition' }
+    ],
+    conditionReport: [
+      'Goggles seals are airtight with zero water ingress.',
+      'Silicone cap is intact, no tears or stretching.',
+      'Nose bridge adjusters work smoothly.'
+    ],
+    image: 'https://images.unsplash.com/photo-1560090995-01632a28895b?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'prod-17',
+    title: 'Nivia Pro Football (FIFA Quality)',
+    description: 'FIFA quality certified professional football with thermally bonded panels. Perfect for training sessions or league matches. Includes a pump and needle kit.',
+    category: 'Sports',
+    brand: 'Nivia',
+    condition: 'New',
+    rentPerDay: 80,
+    securityDeposit: 800,
+    address: 'HSR Layout, 27th Main',
+    city: 'Bangalore',
+    rating: 4.7,
+    reviewsCount: 21,
+    availability: 'Available',
+    trustScore: 94,
+    scamRisk: 'Low',
+    scamReasons: [
+      'FIFA certification label verified.',
+      'Lender has 12 successful rental completions.'
+    ],
+    owner: {
+      name: 'Karan Mehra',
+      contact: '+91 91234 56789',
+      rating: 4.9,
+      verified: true
+    },
+    serialNumber: 'NIV-FB-0291',
+    invoiceVerified: true,
+    rentHistory: [
+      { year: 2025, price: 70 },
+      { year: 2026, price: 80 }
+    ],
+    gradientTheme: 'linear-gradient(135deg, #166534 0%, #14532d 100%)',
+    specifications: [
+      { label: 'Size', value: 'Official Size 5' },
+      { label: 'Panel Count', value: '32 Thermally Bonded Panels' },
+      { label: 'Certification', value: 'FIFA Quality Pro' }
+    ],
+    conditionReport: [
+      'Ball surface is clean and free of scuffs.',
+      'Air retention is at 100%, inflated to correct PSI.',
+      'Pump and needle included and functional.'
+    ],
+    image: 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'prod-18',
+    title: 'Yoga & Pilates Studio Starter Bundle',
+    description: 'Complete yoga kit for studio or home use. Includes a 6mm non-slip TPE yoga mat, two cork blocks, one stretch strap, and a microfiber cleaning cloth. Perfect for beginners and professionals.',
+    category: 'Sports',
+    brand: 'Decathlon',
+    condition: 'Like New',
+    rentPerDay: 50,
+    securityDeposit: 500,
+    address: 'Koramangala, 5th Block',
+    city: 'Bangalore',
+    rating: 4.9,
+    reviewsCount: 32,
+    availability: 'Available',
+    trustScore: 97,
+    scamRisk: 'Low',
+    scamReasons: [
+      'Seller identity verified with Aadhaar and address.',
+      'Invoice from Decathlon online store verified.'
+    ],
+    owner: {
+      name: 'Priya Verma',
+      contact: '+91 88776 65544',
+      rating: 4.5,
+      verified: true
+    },
+    serialNumber: 'DEC-YG-2201',
+    invoiceVerified: true,
+    rentHistory: [
+      { year: 2025, price: 45 },
+      { year: 2026, price: 50 }
+    ],
+    gradientTheme: 'linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)',
+    specifications: [
+      { label: 'Mat Thickness', value: '6mm TPE Non-Slip' },
+      { label: 'Blocks', value: '2x Cork Yoga Blocks' },
+      { label: 'Accessories', value: 'Stretch Strap + Towel' }
+    ],
+    conditionReport: [
+      'Yoga mat is clean and free of odors.',
+      'Cork blocks show minimal use.',
+      'Stretch strap and buckle in perfect condition.'
+    ],
+    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'prod-19',
+    title: 'Bosch Electric Mountain Bike (e-MTB)',
+    description: 'Premium 29-inch electric mountain bike with Bosch mid-drive motor, Shimano hydraulic disc brakes, and 500Wh battery providing 80km range. Ideal for weekend trail rides.',
+    category: 'Sports',
+    brand: 'Bosch',
+    condition: 'Like New',
+    rentPerDay: 2500,
+    securityDeposit: 50000,
+    address: 'Indiranagar, 100 Feet Road',
+    city: 'Bangalore',
+    rating: 4.9,
+    reviewsCount: 9,
+    availability: 'Available',
+    trustScore: 98,
+    scamRisk: 'Low',
+    scamReasons: [
+      'Premium listing verified by RentWise specialist.',
+      'Motor serial validated via Bosch warranty portal.',
+      'Lender has completed 6 high-value verified rentals.'
+    ],
+    owner: {
+      name: 'Karan Mehra',
+      contact: '+91 91234 56789',
+      rating: 4.9,
+      verified: true
+    },
+    serialNumber: 'BSC-EMTB-7721',
+    invoiceVerified: true,
+    rentHistory: [
+      { year: 2025, price: 2200 },
+      { year: 2026, price: 2500 }
+    ],
+    gradientTheme: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+    specifications: [
+      { label: 'Motor', value: 'Bosch Performance CX 85Nm' },
+      { label: 'Battery', value: '500Wh (80km range)' },
+      { label: 'Brakes', value: 'Shimano 4-Piston Hydraulic Disc' }
+    ],
+    conditionReport: [
+      'Battery retains 98% charge capacity.',
+      'Motor drive operates without noise or lag.',
+      'Brake pads have 85% life remaining.'
+    ],
+    image: 'https://images.unsplash.com/photo-1571068316344-75bc76f77890?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'prod-20',
+    title: 'Everlast Pro Boxing Gloves & Focus Mitt Set',
+    description: 'Professional 16oz training boxing gloves paired with Everlast focus strike mitts. Used by coaching teams for sparring and heavy bag training. Includes hand wraps.',
+    category: 'Sports',
+    brand: 'Everlast',
+    condition: 'Good',
+    rentPerDay: 150,
+    securityDeposit: 1500,
+    address: 'Andheri East, JB Nagar',
+    city: 'Mumbai',
+    rating: 4.7,
+    reviewsCount: 18,
+    availability: 'Available',
+    trustScore: 93,
+    scamRisk: 'Low',
+    scamReasons: [
+      'Verified sports equipment dealer listing.',
+      'Lender has 10 completed positive reviews.'
+    ],
+    owner: {
+      name: 'Rohan Sharma',
+      contact: '+91 98765 43210',
+      rating: 4.8,
+      verified: true
+    },
+    serialNumber: 'EVR-BX-1621',
+    invoiceVerified: true,
+    rentHistory: [
+      { year: 2025, price: 130 },
+      { year: 2026, price: 150 }
+    ],
+    gradientTheme: 'linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%)',
+    specifications: [
+      { label: 'Glove Weight', value: '16 oz Training' },
+      { label: 'Material', value: 'Synthetic Leather' },
+      { label: 'Mitts', value: 'Hook & Loop Focus Pads' }
+    ],
+    conditionReport: [
+      'Gloves have been sanitized and odor-free.',
+      'Velcro straps hold firm with no fraying.',
+      'Focus mitts padding is firm and even.'
+    ],
+    image: 'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'prod-21',
+    title: 'Rollerblade Zetrablade Inline Skates (Pair)',
+    description: 'High-performance adult inline roller skates with aluminium frame, 80mm wheels, and SG7 ABEC 7 bearings. Great for road and rink skating. Available in sizes 7 to 11.',
+    category: 'Sports',
+    brand: 'Rollerblade',
+    condition: 'Good',
+    rentPerDay: 200,
+    securityDeposit: 2000,
+    address: 'Kalyani Nagar, Clover Park',
+    city: 'Pune',
+    rating: 4.6,
+    reviewsCount: 13,
+    availability: 'Available',
+    trustScore: 91,
+    scamRisk: 'Low',
+    scamReasons: [
+      'Brand verification matched via Rollerblade official.',
+      'Seller verified with 7 successful transactions.'
+    ],
+    owner: {
+      name: 'Siddharth Joshi',
+      contact: '+91 97766 55443',
+      rating: 4.6,
+      verified: true
+    },
+    serialNumber: 'RB-ZTR-8810',
+    invoiceVerified: true,
+    rentHistory: [
+      { year: 2025, price: 180 },
+      { year: 2026, price: 200 }
+    ],
+    gradientTheme: 'linear-gradient(135deg, #0f766e 0%, #115e59 100%)',
+    specifications: [
+      { label: 'Wheel Size', value: '80mm' },
+      { label: 'Bearings', value: 'ABEC 7' },
+      { label: 'Sizes Available', value: 'UK 7 - UK 11' }
+    ],
+    conditionReport: [
+      'Wheels show even wear, still have 70% life.',
+      'Frame is straight with no bends or cracks.',
+      'Closures and buckles function perfectly.'
+    ],
+    image: 'https://images.unsplash.com/photo-1600172454629-fce95c0abfce?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'prod-22',
+    title: 'Archery Compound Bow Kit (30-50 lb Draw)',
+    description: 'Full compound bow set with adjustable 30-50 lb draw weight. Includes 6 carbon arrows, bow sight, arrow rest, D-loop, and a padded carry bag. Ideal for beginners and hobbyists.',
+    category: 'Sports',
+    brand: 'Bear Archery',
+    condition: 'Like New',
+    rentPerDay: 300,
+    securityDeposit: 3000,
+    address: 'Saket District Centre, South Delhi',
+    city: 'Delhi',
+    rating: 4.8,
+    reviewsCount: 7,
+    availability: 'Available',
+    trustScore: 95,
+    scamRisk: 'Low',
+    scamReasons: [
+      'Lender Aadhaar and equipment invoice verified.',
+      'Archery club registered member confirmed.'
+    ],
+    owner: {
+      name: 'Priya Verma',
+      contact: '+91 88776 65544',
+      rating: 4.5,
+      verified: true
+    },
+    serialNumber: 'BA-CPD-3321',
+    invoiceVerified: true,
+    rentHistory: [
+      { year: 2025, price: 270 },
+      { year: 2026, price: 300 }
+    ],
+    gradientTheme: 'linear-gradient(135deg, #b45309 0%, #78350f 100%)',
+    specifications: [
+      { label: 'Draw Weight', value: '30-50 lbs (Adjustable)' },
+      { label: 'Arrows', value: '6x Carbon Arrows (29-inch)' },
+      { label: 'Accessories', value: 'Sight, Arrow Rest, D-Loop' }
+    ],
+    conditionReport: [
+      'Bowstring is free of fraying and properly waxed.',
+      'Cam system draws and releases cleanly.',
+      'All 6 arrows are straight with intact nocking.'
+    ],
+    image: 'https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'prod-23',
+    title: 'Callaway Golf Club Iron Set (7-Piece)',
+    description: 'Premium 7-piece Callaway Strata golf iron set (4–9 iron + PW) with graphite shafts and performance cavity-back face. Includes individual head covers and carry bag.',
+    category: 'Sports',
+    brand: 'Callaway',
+    condition: 'Good',
+    rentPerDay: 500,
+    securityDeposit: 10000,
+    address: 'Golf Club Road, DLF Phase 5',
+    city: 'Delhi',
+    rating: 4.9,
+    reviewsCount: 11,
+    availability: 'Available',
+    trustScore: 96,
+    scamRisk: 'Low',
+    scamReasons: [
+      'Golf club equipment listing cross-verified by admin.',
+      'Serial numbers match Callaway sports warranty portal.'
+    ],
+    owner: {
+      name: 'Anish Reddy',
+      contact: '+91 99887 76655',
+      rating: 4.7,
+      verified: true
+    },
+    serialNumber: 'CAL-GF-7STR-005',
+    invoiceVerified: true,
+    rentHistory: [
+      { year: 2025, price: 450 },
+      { year: 2026, price: 500 }
+    ],
+    gradientTheme: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+    specifications: [
+      { label: 'Set Includes', value: '4, 5, 6, 7, 8, 9 Iron + PW' },
+      { label: 'Shaft', value: 'Graphite Regular Flex' },
+      { label: 'Grip', value: 'Tour Velvet Wrapped' }
+    ],
+    conditionReport: [
+      'Club faces are clean, grooves are sharp.',
+      'Shafts are straight and free of dents.',
+      'Grips show light use and are non-slip.'
+    ],
+    image: 'https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=800&q=80'
   }
 ];
+
