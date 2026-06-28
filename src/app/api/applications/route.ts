@@ -9,7 +9,10 @@ export async function GET() {
 
     const result = await ddbDocClient.send(new ScanCommand({
       TableName: appsTable
-    }));
+    })).catch(err => {
+      console.warn("DynamoDB scan for applications failed, falling back to empty list:", err.message);
+      return { Items: [] };
+    });
 
     const applications = result.Items || [];
 

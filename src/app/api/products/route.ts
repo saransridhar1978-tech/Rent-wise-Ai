@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { ddbDocClient, initializeDynamoDB } from "@/lib/dynamodb";
 import { ScanCommand, PutCommand } from "@aws-sdk/lib-dynamodb";
+import { mockProducts } from "@/data/mockProducts";
 
 export async function GET() {
   try {
@@ -9,7 +10,10 @@ export async function GET() {
     
     const result = await ddbDocClient.send(new ScanCommand({
       TableName: productsTable
-    }));
+    })).catch(err => {
+      console.warn("DynamoDB scan failed, falling back to mock data:", err.message);
+      return { Items: mockProducts };
+    });
 
     const products = result.Items || [];
     

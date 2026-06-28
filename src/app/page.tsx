@@ -58,13 +58,25 @@ function App() {
         setLoading(true);
         const prodRes = await fetch('/api/products');
         const prodData = await prodRes.json();
-        setProducts(prodData);
+        if (Array.isArray(prodData)) {
+          setProducts(prodData);
+        } else {
+          console.error('Invalid products data returned:', prodData);
+          setProducts([]);
+        }
 
         const appRes = await fetch('/api/applications');
         const appData = await appRes.json();
-        setApplications(appData);
+        if (Array.isArray(appData)) {
+          setApplications(appData);
+        } else {
+          console.error('Invalid applications data returned:', appData);
+          setApplications([]);
+        }
       } catch (err) {
         console.error('Error fetching data from server:', err);
+        setProducts([]);
+        setApplications([]);
       } finally {
         setLoading(false);
       }
