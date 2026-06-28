@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Search, Mic, MicOff, Filter, Sparkles } from 'lucide-react';
 

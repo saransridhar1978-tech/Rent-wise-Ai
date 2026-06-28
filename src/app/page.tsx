@@ -1,17 +1,19 @@
+'use client';
+
 import { useState, useEffect } from 'react';
-import { mockProducts } from './data/mockProducts';
-import type { Product } from './data/mockProducts';
-import { Navbar } from './components/Navbar';
-import { Footer } from './components/Footer';
-import { Hero } from './components/Hero';
-import { PropertyCard } from './components/PropertyCard';
-import { PropertyDetail } from './components/PropertyDetail';
-import { CompareModal } from './components/CompareModal';
-import { AuthModal } from './components/AuthModal';
-import { TenantDashboard } from './components/TenantDashboard';
-import { OwnerDashboard } from './components/OwnerDashboard';
-import { AdminDashboard } from './components/AdminDashboard';
-import { AiChatbox } from './components/AiChatbox';
+import { mockProducts } from '../data/mockProducts';
+import type { Product } from '../data/mockProducts';
+import { Navbar } from '../components/Navbar';
+import { Footer } from '../components/Footer';
+import { Hero } from '../components/Hero';
+import { PropertyCard } from '../components/PropertyCard';
+import { PropertyDetail } from '../components/PropertyDetail';
+import { CompareModal } from '../components/CompareModal';
+import { AuthModal } from '../components/AuthModal';
+import { TenantDashboard } from '../components/TenantDashboard';
+import { OwnerDashboard } from '../components/OwnerDashboard';
+import { AdminDashboard } from '../components/AdminDashboard';
+import { AiChatbox } from '../components/AiChatbox';
 import { Sparkles, LayoutGrid, Heart } from 'lucide-react';
 
 function App() {
@@ -27,7 +29,8 @@ function App() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   // Products Database State
-  const [products, setProducts] = useState<Product[]>(mockProducts);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
 
   // Wishlist & Comparison arrays
   const [wishlist, setWishlist] = useState<Product[]>([]);
@@ -35,16 +38,7 @@ function App() {
   const [isCompareOpen, setIsCompareOpen] = useState(false);
 
   // Rental Applications State (represented as bookings in product marketplace)
-  const [applications, setApplications] = useState<{ propertyId: string, propertyTitle: string, status: string, date: string, totalAmount?: string, deposit?: string }[]>([
-    {
-      propertyId: 'prod-2',
-      propertyTitle: 'DJI Mavic 3 Pro Drone Kit',
-      status: 'AI Check Approved',
-      date: '2026-06-20',
-      totalAmount: '₹8,997',
-      deposit: '₹30,000'
-    }
-  ]);
+  const [applications, setApplications] = useState<{ propertyId: string, propertyTitle: string, status: string, date: string, totalAmount?: string, deposit?: string }[]>([]);
 
   // Language translation support
   const [language, setLanguage] = useState<string>('English');
@@ -56,6 +50,27 @@ function App() {
   const [productCategory, setProductCategory] = useState('');
   const [productCondition, setProductCondition] = useState('');
   const [invoiceVerified, setInvoiceVerified] = useState(false);
+
+  // Fetch initial data from Next.js backend
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const prodRes = await fetch('/api/products');
+        const prodData = await prodRes.json();
+        setProducts(prodData);
+
+        const appRes = await fetch('/api/applications');
+        const appData = await appRes.json();
+        setApplications(appData);
+      } catch (err) {
+        console.error('Error fetching data from server:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
 
   // Apply Theme effect
   useEffect(() => {
@@ -99,33 +114,67 @@ function App() {
   };
 
   // Submit Rent Application
-  const handleApply = (newApp: { propertyId: string, propertyTitle: string, status: string, date: string, totalAmount?: string, deposit?: string }) => {
+  const handleApply = async (newApp: { propertyId: string, propertyTitle: string, status: string, date: string, totalAmount?: string, deposit?: string }) => {
     setApplications(prev => [newApp, ...prev]);
+    try {
+      await fetch('/api/applications', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...newApp,
+          user_id: 'renter-1' // Dummy user ID for local session
+        })
+      });
+    } catch (err) {
+      console.error('Failed to submit application to server:', err);
+    }
   };
 
   // Owner approves application
-  const handleApproveApplication = (prodId: string) => {
+  const handleApproveApplication = async (prodId: string) => {
     setApplications(prev => prev.map(app => 
       app.propertyId === prodId ? { ...app, status: 'Booked (Verified)' } : app
     ));
+    try {
+      await fetch(`/api/applications/${prodId}/approve`, {
+        method: 'PATCH'
+      });
+    } catch (err) {
+      console.error('Failed to approve application on server:', err);
+    }
   };
 
   // Owner adds product listing
-  const handleAddProduct = (newProd: Product) => {
+  const handleAddProduct = async (newProd: Product) => {
     setProducts(prev => [newProd, ...prev]);
+    try {
+      await fetch('/api/products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newProd)
+      });
+    } catch (err) {
+      console.error('Failed to list product on server:', err);
+    }
   };
 
   // Admin deletes product
-  const handleDeleteProduct = (id: string) => {
+  const handleDeleteProduct = async (id: string) => {
     setProducts(prev => prev.filter(p => p.id !== id));
-    // Clear selection if deleted
     if (selectedProduct?.id === id) {
       setSelectedProduct(null);
+    }
+    try {
+      await fetch(`/api/products/${id}`, {
+        method: 'DELETE'
+      });
+    } catch (err) {
+      console.error('Failed to delete product on server:', err);
     }
   };
 
   // Admin overrides Trust Score
-  const handleUpdateProductTrust = (id: string, score: number) => {
+  const handleUpdateProductTrust = async (id: string, score: number) => {
     setProducts(prev => prev.map(p => {
       if (p.id === id) {
         let risk: 'Low' | 'Medium' | 'High' = 'Low';
@@ -150,6 +199,20 @@ function App() {
       }
       return p;
     }));
+
+    try {
+      const res = await fetch(`/api/products/${id}/trust`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ trustScore: score })
+      });
+      const data = await res.json();
+      if (data.scamReasons) {
+        setProducts(prev => prev.map(p => p.id === id ? { ...p, scamReasons: data.scamReasons } : p));
+      }
+    } catch (err) {
+      console.error('Failed to update trust score on server:', err);
+    }
   };
 
   const handleResetFilters = () => {
@@ -265,7 +328,21 @@ function App() {
                 </div>
 
                 {/* Listings Grid */}
-                {filteredProducts.length === 0 ? (
+                {loading ? (
+                  <div className="glass-panel" style={{ padding: '4rem 2rem', textAlign: 'center', color: 'var(--text-muted)' }}>
+                    <div style={{
+                      width: '40px',
+                      height: '40px',
+                      border: '4px solid rgba(255,255,255,0.1)',
+                      borderTopColor: 'var(--primary)',
+                      borderRadius: '50%',
+                      margin: '0 auto 1rem auto',
+                      animation: 'pulseBorder 1s linear infinite'
+                    }} />
+                    <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Loading Listings...</h3>
+                    <p style={{ fontSize: '0.85rem' }}>Connecting to AWS DynamoDB database...</p>
+                  </div>
+                ) : filteredProducts.length === 0 ? (
                   <div className="glass-panel" style={{ padding: '4rem 2rem', textAlign: 'center', color: 'var(--text-muted)' }}>
                     <Sparkles size={48} style={{ margin: '0 auto 1rem auto', opacity: 0.5, color: 'var(--text-muted)' }} />
                     <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>No Products Found</h3>

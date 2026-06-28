@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import type { Product } from '../data/mockProducts';
 import { Shield, MapPin, Eye, Compass, Package, Award, Truck } from 'lucide-react';

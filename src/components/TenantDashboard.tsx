@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { mockProducts, type Product } from '../data/mockProducts';
 import { Heart, Clock, Download, Sparkles, FileText, ArrowRight, Home, ShieldCheck, Upload, AlertTriangle, CheckCircle2 } from 'lucide-react';

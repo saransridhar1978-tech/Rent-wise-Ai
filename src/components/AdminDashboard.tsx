@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import type { Product } from '../data/mockProducts';
 import { ShieldAlert, Trash2, Scale, Eye, UserCheck, Check, X, AlertTriangle } from 'lucide-react';

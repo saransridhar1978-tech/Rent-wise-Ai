@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { X, ShieldAlert, Mail, Lock, CheckCircle2 } from 'lucide-react';
 import confetti from 'canvas-confetti';

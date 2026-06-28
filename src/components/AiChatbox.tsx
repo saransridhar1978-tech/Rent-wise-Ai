@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect, useRef } from 'react';
 import { mockProducts, type Product } from '../data/mockProducts';
 import { MessageSquare, X, Send, Sparkles, ArrowRight } from 'lucide-react';

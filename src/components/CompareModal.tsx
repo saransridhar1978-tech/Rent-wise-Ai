@@ -1,3 +1,5 @@
+'use client';
+
 import type { Product } from '../data/mockProducts';
 import { X, Sparkles, AlertTriangle, ShieldCheck, Award } from 'lucide-react';
 

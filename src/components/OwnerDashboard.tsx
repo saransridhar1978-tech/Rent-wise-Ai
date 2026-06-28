@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import type { Product } from '../data/mockProducts';
 import { BarChart, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
@@ -106,7 +108,8 @@ export const OwnerDashboard = ({
         'Device functional and passes initial self-test checks.',
         'Zero physical structural defects reported by lender.'
       ],
-      image: finalImage
+      image: finalImage,
+      price: (parseInt(deposit) || parseInt(rent) * 10) * 5
     };
 
     onAddProperty(newProduct);
@@ -207,40 +210,40 @@ export const OwnerDashboard = ({
               
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
-                  <input 
-                    type="number" 
-                    className="glass-input" 
-                    placeholder="Product Value / Deposit (₹)" 
-                    value={deposit}
-                    onChange={(e) => {
-                      const depVal = e.target.value;
-                      setDeposit(depVal);
-                      const parsed = parseInt(depVal);
-                      if (!isNaN(parsed)) {
-                        const calculated = parsed > 3000 ? Math.round(parsed * 0.05) : Math.round(parsed * 0.10);
-                        setRent(calculated.toString());
-                      } else {
-                        setRent('');
-                      }
-                    }}
-                    required
-                    style={{ flex: 1 }}
-                  />
-                  <input 
-                    type="number" 
-                    className="glass-input" 
-                    placeholder="Rent (₹/day)" 
-                    value={rent}
-                    readOnly
-                    required
-                    style={{ flex: 1, background: 'rgba(255, 255, 255, 0.05)', cursor: 'not-allowed' }}
-                    title="Rental price automatically calculated based on product value"
-                  />
-                </div>
-                <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)', paddingLeft: '0.2rem' }}>
-                  * Daily rent is auto-calculated: 5% of value if above ₹3,000, else 10%.
-                </span>
-              </div>
+                   <input 
+                     type="number" 
+                     className="glass-input" 
+                     placeholder="Product Value (₹)" 
+                     value={deposit}
+                     onChange={(e) => {
+                       const depVal = e.target.value;
+                       setDeposit(depVal);
+                       const parsed = parseInt(depVal);
+                       if (!isNaN(parsed)) {
+                         const calculated = parsed < 3000 ? Math.round(parsed * 0.05) : Math.round(parsed * 0.10);
+                         setRent(calculated.toString());
+                       } else {
+                         setRent('');
+                       }
+                     }}
+                     required
+                     style={{ flex: 1 }}
+                   />
+                   <input 
+                     type="number" 
+                     className="glass-input" 
+                     placeholder="Rent (₹/day)" 
+                     value={rent}
+                     readOnly
+                     required
+                     style={{ flex: 1, background: 'rgba(255, 255, 255, 0.05)', cursor: 'not-allowed' }}
+                     title="Rental price automatically calculated based on product value"
+                   />
+                 </div>
+                 <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)', paddingLeft: '0.2rem' }}>
+                   * Daily rent is auto-calculated: 5% of value if below ₹3,000, else 10%. Security deposit is a flat ₹500.
+                 </span>
+               </div>
 
               <select 
                 className="glass-input" 

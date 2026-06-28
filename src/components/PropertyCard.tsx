@@ -1,3 +1,5 @@
+'use client';
+
 import type { Product } from '../data/mockProducts';
 import { ShieldCheck, ShieldAlert, Heart, BarChart3, Star, Tag, CheckSquare, Layers } from 'lucide-react';
 
